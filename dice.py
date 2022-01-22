@@ -64,6 +64,13 @@ class Game():
         self.dice5 = Dice()
 
     def calculate_score(self, dices):
+        '''This method increas the score of the Game's player 100 points by each dine with value 1, 
+        and 50 points by each dine with value 5, for both cases the number of win cases increase in 1
+
+        Arguments: 
+            - dices: a set of 5 intergers that represent the current values on the top edge of 5 dices. 
+        '''
+        # Case variable represents the number of times 1 and 5 appears in the dices set
         cases = 0
         for val in dices:
             if(val == 1):
@@ -75,6 +82,14 @@ class Game():
         return cases
 
     def keep_playing(self):
+        '''This method keeps the control flow of the game. As long as the user wishes to play and the dices
+        retrive 1's or 5's the game continue. If the user decides to quit or the dices don't show 1s or 5's
+        the game finish.
+
+        Arguments: 
+            - self: this argument is a pointer to the current object 
+        '''
+
         val = input("Roll dice? [y/n] ")
         if(val == "y" or val == "yes"):
             dices_values = self.player.throw_dice(self.dice1, self.dice2, self.dice3, self.dice4, self.dice5)
@@ -92,11 +107,21 @@ class Game():
             return True
 
     def start_playing(self):
+        '''This method assures the game will continue until the function Keep_playing returns False
+        making the game finish.
+
+        Arguments: 
+            - self: this argument is a pointer to the current object 
+        '''
         keep_throwing = True
         while(keep_throwing):
             keep_throwing = self.keep_playing()
         
 def main():
+    '''This is the main funtion and is responsible of initialize the Player and the Game.
+    
+        Arguments: None
+    '''
     player1 = Player()
     play = Game(player1)
     play.start_playing()
