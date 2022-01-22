@@ -2,6 +2,7 @@
 Assignment: Game Dice
 Author: Rosana Garcia
 Course: CSE 210
+
 '''
 
 # import random
@@ -21,14 +22,18 @@ class Dice():
         '''
         # prints a random value from the list
         return random.choice(self.values)
-        
+
 class Player():
     '''An abstract template representation of a Games's Player. The
     responsibility of a Player is to play a game and throw the Dines.
     '''
-    # class constructor
+
+    # Function constructor for class Player
+    ''' A method that initializa an instance of the class Dine 
+        each dine have six edges with values from 1 to 6.
+    '''
     def __init__(self):
-        self.name = ""
+        
         self.score = 0
 
     def throw_dice(self, dice1, dice2, dice3, dice4, dice5):
@@ -46,7 +51,11 @@ class Game():
     '''An abstract template representation of a Games of Dine.
     Each Game needs a Player and five Dines.
     '''
+
     def __init__(self, player):
+        '''An abstract template representation of a Games of Dine.
+        Each Game needs a Player and five Dines.
+        '''
         self.player = player
         self.dice1 = Dice()
         self.dice2 = Dice()
@@ -79,7 +88,8 @@ class Game():
         elif(val == "n" or val == "no"):
             return False
         else:
-            print("Invalid input, try again and follow the instructions.")
+            print("Invalid input, try again and follow the instructions.\n")
+            return True
 
     def start_playing(self):
         keep_throwing = True
@@ -90,4 +100,6 @@ def main():
     player1 = Player()
     play = Game(player1)
     play.start_playing()
-main()
+
+if __name__ == "__main__":
+    main()
